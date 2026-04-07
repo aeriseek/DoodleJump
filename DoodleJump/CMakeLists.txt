@@ -16,9 +16,12 @@ add_executable (DoodleJump
 "DoodleJump.h" 
 "Register.cpp" 
 "Register.h" 
+"Config.h"
+"World.h"
 "components/Position.h"
 "components/Velocity.h"
-"systems/MovementSystem.h" 
+"components/Input.h"
+"systems/BuildLevelSystem.cpp"
 "systems/MovementSystem.cpp"
 )
 

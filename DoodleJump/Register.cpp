@@ -10,6 +10,11 @@ Entity Register::create()
 	return id;
 }
 
+uint32_t Register::totalEntities()
+{
+	return nextId;
+}
+
 void Register::addPosition(Entity e, float x, float y)
 {
 	positions[e] = Position(x, y);
@@ -20,4 +25,15 @@ void Register::addVelocity(Entity e, float x, float y)
 {
 	velocities[e] = Velocity(x, y);
 	hasVelocity[e] = true;
+}
+
+void Register::addInput(Entity e)
+{
+	hasInputComponent[e] = Input();
+}
+
+void Register::addSprite(Entity e, sf::Sprite sprite)
+{
+	sprites[e] = sprite;
+	hasSprite[e] = true;
 }
