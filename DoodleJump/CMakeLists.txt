@@ -12,18 +12,19 @@ include_directories(.)
 include_directories(components systems)
 
 add_executable (DoodleJump 
-"DoodleJump.cpp" 
-"DoodleJump.h" 
+"DoodleJump.cpp"  
 "Register.cpp" 
 "Register.h" 
 "Config.h"
-"World.h"
+"Game.h"
+"Game.cpp"
 "components/Position.h"
 "components/Velocity.h"
 "components/Input.h"
 "systems/BuildLevelSystem.cpp"
 "systems/MovementSystem.cpp"
-)
+ "AssetManager.h"
+"AssetManager.cpp")
 
 target_link_libraries(DoodleJump sfml-graphics sfml-window sfml-system)
 

@@ -1,13 +1,17 @@
-#pragma once
+﻿#pragma once
+#include "AssetManager.h"
 #include "Register.h"
 #include <unordered_set>
 
 
-class World
+class Game
 {
 private:
-    Register reg;
+
+    AssetManager _assets;
+    Register _reg;
     void createPlayer(float initPosX, float initPosY);
+    void setBackground();
 public:
     void run();
 

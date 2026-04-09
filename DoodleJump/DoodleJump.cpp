@@ -1,5 +1,5 @@
-﻿#include "DoodleJump.h"
-#include "Config.h"
+﻿#include "Config.h"
+
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Window/VideoMode.hpp"
 #include "SFML/Window/ContextSettings.hpp"
@@ -8,7 +8,11 @@
 int main()
 {
 
-	sf::RenderWindow mainWin(sf::VideoMode(windowSizeX, windowSizeY), "Doodle Jump", sf::Style::Close | sf::Style::Titlebar);
+	sf::RenderWindow mainWin(
+		sf::VideoMode(windowSizeX, windowSizeY), 
+		"Doodle Jump", sf::Style::Close | sf::Style::Titlebar);
+
+
 
 
 	while (mainWin.isOpen())
