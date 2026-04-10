@@ -9,6 +9,8 @@ class Game
 {
 private:
     sf::RenderWindow* _win;
+    sf::View _view;
+    Entity _player;
     AssetManager _assets;
     Register _reg;
     void createPlayer();

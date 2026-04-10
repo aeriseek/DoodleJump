@@ -22,7 +22,6 @@ void resolveBorders(Register& reg, Entity entity)
 	}
 }
 
-// simplest AABB
 void CollisionSystem(Register& reg)
 {
 	for (auto& [player, _] : reg.positions)
@@ -31,7 +30,7 @@ void CollisionSystem(Register& reg)
 		resolveBorders(reg, player);
 		for (auto& [entity, _] : reg.positions)
 		{
-			if (player == entity) continue;
+			if (player == entity || !reg.hasCollision[entity]) continue;
 			const sf::FloatRect& bPlayer = reg.sprites[player].getGlobalBounds();
 			const sf::FloatRect& bEntity = reg.sprites[entity].getGlobalBounds();
 

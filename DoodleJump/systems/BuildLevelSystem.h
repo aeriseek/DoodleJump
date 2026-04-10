@@ -2,5 +2,4 @@
 #include "Register.h"
 #include "Config.h"
 
-// simplest AABB
-void CollisionSystem(Register& reg);
+void BuildLevelSystem(Register& reg, float startY);

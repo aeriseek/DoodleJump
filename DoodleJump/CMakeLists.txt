@@ -28,7 +28,7 @@ add_executable (DoodleJump
 "AssetManager.cpp" 
 "systems/RenderSystem.h" 
 "systems/GravitySystem.h" 
-"systems/GravitySystem.cpp" "systems/MovementSystem.h" "systems/InputSystem.cpp" "systems/InputSystem.h" "components/Input.h" "systems/AnimationSystem.cpp" "systems/AnimationSystem.h" "systems/CollisionSystem.h" "systems/CollisionSystem.cpp")
+"systems/GravitySystem.cpp" "systems/MovementSystem.h" "systems/InputSystem.cpp" "systems/InputSystem.h" "components/Input.h" "systems/AnimationSystem.cpp" "systems/AnimationSystem.h" "systems/CollisionSystem.h" "systems/CollisionSystem.cpp" "systems/BuildLevelSystem.h" "systems/CameraSystem.h" "systems/CameraSystem.cpp")
 
 target_link_libraries(DoodleJump sfml-graphics sfml-window sfml-system)
 

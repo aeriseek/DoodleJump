@@ -18,12 +18,12 @@ public:
 	std::unordered_map<Entity, Input> inputComponent;
 	std::unordered_map<Entity, sf::Sprite> sprites;
 
-	std::bitset<64> hasPosition{}; // max 64 entities for begin
-	std::bitset<64> hasVelocity{};
-	std::bitset<64> hasInput{};
-	std::bitset<64> gravityAffected{};
-	std::bitset<64> hasSprite{};
-	std::bitset<64> hasCollision{};
+	std::bitset<1024> hasPosition{}; // max 1024 entities for begin
+	std::bitset<1024> hasVelocity{};
+	std::bitset<1024> hasInput{};
+	std::bitset<1024> gravityAffected{};
+	std::bitset<1024> hasSprite{};
+	std::bitset<1024> hasCollision{};
 	Entity create();
 	
 	uint32_t totalEntities();

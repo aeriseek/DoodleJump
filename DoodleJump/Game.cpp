@@ -6,21 +6,25 @@
 #include "systems/InputSystem.h"
 #include "systems/AnimationSystem.h"
 #include "systems/CollisionSystem.h"
+#include "systems/CameraSystem.h"
+#include "systems/BuildLevelSystem.h"
 #include "SFML/Window/Event.hpp"
 
 #include <iostream>
 
 void Game::createPlayer()
 {
-    Entity player = _reg.create();
-    _reg.addPosition(player, windowSizeX / 2, windowSizeY / 2);
-    _reg.addVelocity(player, 0.f, 0.f);
-    _reg.addInput(player);
+    _player = _reg.create();
+    _reg.addPosition(_player, windowSizeX / 2, windowSizeY / 2);
+    _reg.addVelocity(_player, 0.f, 0.f);
+    _reg.addInput(_player);
 	sf::Texture& tex = AssetManager::GetTexture("resources/player.png");
     sf::Sprite sprite(tex);
 	sprite.setOrigin(tex.getSize().x / 2, tex.getSize().y / 2);
-    _reg.addSprite(player, sprite);
-	_reg.gravityAffected[player] = true;
+    _reg.addSprite(_player, sprite);
+	_reg.gravityAffected[_player] = true;
+
+
 };
 
 void Game::setBackground()
@@ -30,7 +34,7 @@ void Game::setBackground()
     _reg.addSprite(background, sprite);
 }
 
-Game::Game(sf::RenderWindow& gameWin) : _win(&gameWin)
+Game::Game(sf::RenderWindow& gameWin) : _win(&gameWin), _view(sf::FloatRect(0, 0, windowSizeX, windowSizeY))
 {
 }
 
@@ -58,9 +62,12 @@ void Game::run()
 		std::cout << "posy : " << _reg.positions[1].y << std::endl;
 		std::cout << "velx : " << _reg.velocities[1].x << std::endl;
 		std::cout << "vely : " << _reg.velocities[1].x << std::endl;*/
+		float cameraTop = _view.getCenter().y - (_view.getSize().y / 2.0f);
+		BuildLevelSystem(_reg, cameraTop);
 		InputSystem(_reg);
-		//GravitySystem(_reg, dt);
+		GravitySystem(_reg, dt);
 		MovementSystem(_reg, dt);
+		CameraSystem(_reg, *_win, _view, _player);
 		CollisionSystem(_reg);
 		AnimationSystem(_reg);
 		RenderSystem(_reg, _win);
