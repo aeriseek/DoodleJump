@@ -29,7 +29,7 @@ void Register::addVelocity(Entity e, float x, float y)
 
 void Register::addInput(Entity e)
 {
-	hasInputComponent[e] = Input();
+	inputComponent[e] = Input();
 	hasInput[e] = true;
 }
 

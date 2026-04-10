@@ -20,7 +20,7 @@ add_executable (DoodleJump
 "Game.cpp"
 "components/Position.h"
 "components/Velocity.h"
-"components/Input.h"
+
 "systems/BuildLevelSystem.cpp"
 "systems/MovementSystem.cpp"
 "systems/RenderSystem.cpp"

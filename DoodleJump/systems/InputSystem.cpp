@@ -2,9 +2,8 @@
 
 void InputSystem(Register& reg)
 {
-	for (auto& itHasInput : reg.hasInputComponent)
+	for (auto& itInput : reg.inputComponent)
 	{
-		itHasInput.second.left = sf::Keyboard::isKeyPressed(leftButton);
-		itHasInput.second.right = sf::Keyboard::isKeyPressed(rightButton);
+		if (reg.velocities.contains(itInput.first))
 	}
 }
