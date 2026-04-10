@@ -4,6 +4,8 @@ void InputSystem(Register& reg)
 {
 	for (auto& itInput : reg.inputComponent)
 	{
-		if (reg.velocities.contains(itInput.first))
+			itInput.second.movingDirection = 0.f;
+			if (sf::Keyboard::isKeyPressed(leftButton)) itInput.second.movingDirection -= 1.f;
+			if (sf::Keyboard::isKeyPressed(rightButton)) itInput.second.movingDirection += 1.f;
 	}
 }

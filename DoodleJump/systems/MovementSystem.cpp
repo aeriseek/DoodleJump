@@ -2,12 +2,14 @@
 
 void MovementSystem(Register& reg, const float dt)
 {
-    for (Entity entity = 0; entity < reg.hasVelocity.size(); ++entity)
+    for (auto const& [entity, _] : reg.positions)
     {
-        if (reg.hasVelocity[entity]) reg.positions[entity] += reg.velocities[entity] * dt;
-        if (reg.hasInput[entity]) {
-            if (reg.inputComponent[entity].left) reg.positions[entity].x -= playerSpeed * dt;
-            if (reg.inputComponent[entity].right) reg.positions[entity].x += playerSpeed * dt;
+        if (reg.hasVelocity[entity]) { // for inertion moves (gravity etc.)
+            reg.positions[entity] += reg.velocities[entity] * dt;
+        }
+
+        if (reg.hasInput[entity]) { // for input moves
+            reg.positions[entity].x += playerSpeed * reg.inputComponent[entity].movingDirection * dt;
         }
     }
 }

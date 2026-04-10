@@ -15,7 +15,7 @@ class Register
 public:
 	std::unordered_map<Entity, Position> positions;
 	std::unordered_map<Entity, Velocity> velocities;
-	//std::unordered_map<Entity, Input> inputComponent;
+	std::unordered_map<Entity, Input> inputComponent;
 	std::unordered_map<Entity, sf::Sprite> sprites;
 
 	std::bitset<64> hasPosition{}; // max 64 entities for begin
