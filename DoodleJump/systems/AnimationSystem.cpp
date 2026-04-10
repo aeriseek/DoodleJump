@@ -11,6 +11,4 @@ void AnimationSystem(Register& reg)
 				sprite.setScale(-1.f, 1.f);
 		}
 	}
-
-
 }

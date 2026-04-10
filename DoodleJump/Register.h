@@ -23,6 +23,7 @@ public:
 	std::bitset<64> hasInput{};
 	std::bitset<64> gravityAffected{};
 	std::bitset<64> hasSprite{};
+	std::bitset<64> hasCollision{};
 	Entity create();
 	
 	uint32_t totalEntities();
@@ -35,5 +36,6 @@ public:
 
 	void addSprite(Entity e, sf::Sprite sprite);
 
+	void addCollision(Entity e);
 };
 

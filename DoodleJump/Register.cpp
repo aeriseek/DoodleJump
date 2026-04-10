@@ -38,3 +38,8 @@ void Register::addSprite(Entity e, sf::Sprite sprite)
 	sprites[e] = sprite;
 	hasSprite[e] = true;
 }
+
+void Register::addCollision(Entity e)
+{
+	hasCollision[e] = true;
+}

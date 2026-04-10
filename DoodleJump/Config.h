@@ -4,6 +4,7 @@ const int windowSizeX = 600;
 const int windowSizeY = 900;
 
 const float playerSpeed = 500.f;
+const float jumpPower = -1500.f;
 
 const float G = 100; // gravity const
 

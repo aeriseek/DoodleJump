@@ -2,4 +2,4 @@
 #include "Register.h"
 #include "Config.h"
 
-void GravitySystem(Register& reg, const float dt);
+void CollisionSystem(Register& reg);
