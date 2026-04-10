@@ -3,8 +3,8 @@
 
 struct Position
 {
-	float x;
-	float y;
+	float x{};
+	float y{};
 
 	void operator+=(Velocity v)
 	{

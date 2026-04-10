@@ -8,8 +8,12 @@ void RenderSystem(Register& reg, sf::RenderTarget* target)
 
     for (Entity entity = 0; entity < totalEntities; ++entity)
     {
-        if (reg.hasPosition[entity]) 
-            reg.sprites[entity].setPosition(reg.positions[entity].x, reg.positions[entity].y);
-        target->draw(reg.sprites[entity]);
+        if (reg.hasSprite[entity])
+        {
+            if (reg.hasPosition[entity])
+                reg.sprites[entity].setPosition(reg.positions[entity].x, reg.positions[entity].y);
+
+            target->draw(reg.sprites[entity]);
+        }
     }
 }

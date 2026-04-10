@@ -11,7 +11,7 @@ private:
     sf::RenderWindow* _win;
     AssetManager _assets;
     Register _reg;
-    void createPlayer(float initPosX, float initPosY);
+    void createPlayer();
     void setBackground();
 public:
     Game(sf::RenderWindow& gameWin);

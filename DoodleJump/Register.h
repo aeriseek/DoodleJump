@@ -20,6 +20,8 @@ public:
 
 	std::bitset<64> hasPosition{}; // max 64 entities for begin
 	std::bitset<64> hasVelocity{};
+	std::bitset<64> hasInput{};
+	std::bitset<64> gravityAffected{};
 	std::bitset<64> hasSprite{};
 	Entity create();
 	

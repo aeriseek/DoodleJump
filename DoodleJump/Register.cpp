@@ -30,6 +30,7 @@ void Register::addVelocity(Entity e, float x, float y)
 void Register::addInput(Entity e)
 {
 	hasInputComponent[e] = Input();
+	hasInput[e] = true;
 }
 
 void Register::addSprite(Entity e, sf::Sprite sprite)
