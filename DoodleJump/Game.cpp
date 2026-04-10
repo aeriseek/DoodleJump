@@ -4,6 +4,7 @@
 #include "systems/GravitySystem.h"
 #include "systems/MovementSystem.h"
 #include "systems/InputSystem.h"
+#include "systems/AnimationSystem.h"
 #include "SFML/Window/Event.hpp"
 
 #include <iostream>
@@ -57,6 +58,7 @@ void Game::run()
 		InputSystem(_reg);
 		//GravitySystem(_reg, dt);
 		MovementSystem(_reg, dt);
+		AnimationSystem(_reg);
 		RenderSystem(_reg, _win);
 		_win->display();
 	}
