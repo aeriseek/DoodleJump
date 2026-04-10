@@ -11,11 +11,15 @@ bool checkAABB(const sf::FloatRect& a, const sf::FloatRect& b) {
 void resolveBorders(Register& reg, Entity entity)
 {
 	const sf::FloatRect entityBounds = reg.sprites[entity].getGlobalBounds();
-	if (entityBounds.left < 0)
-		reg.positions[entity].x = 0;
-	else if (entityBounds.left + entityBounds.width > windowSizeX)
-		reg.positions[entity].x = windowSizeX - entityBounds.width;
-
+	sf::Vector2f origin = reg.sprites[entity].getOrigin();
+	if (entityBounds.left < 0) {
+		reg.positions[entity].x = origin.x;
+		reg.sprites[entity].setPosition(reg.positions[entity].x, reg.positions[entity].y);
+	}
+	else if (entityBounds.left + entityBounds.width > windowSizeX) {
+		reg.positions[entity].x = windowSizeX - (entityBounds.width - origin.x);
+		reg.sprites[entity].setPosition(reg.positions[entity].x, reg.positions[entity].y);
+	}
 }
 
 // simplest AABB
@@ -27,6 +31,7 @@ void CollisionSystem(Register& reg)
 		resolveBorders(reg, player);
 		for (auto& [entity, _] : reg.positions)
 		{
+			if (player == entity) continue;
 			const sf::FloatRect& bPlayer = reg.sprites[player].getGlobalBounds();
 			const sf::FloatRect& bEntity = reg.sprites[entity].getGlobalBounds();
 
