@@ -23,8 +23,13 @@ add_executable (DoodleJump
 "components/Input.h"
 "systems/BuildLevelSystem.cpp"
 "systems/MovementSystem.cpp"
- "AssetManager.h"
-"AssetManager.cpp")
+"systems/RenderSystem.cpp"
+"AssetManager.h"
+"AssetManager.cpp" 
+"systems/RenderSystem.h")
 
 target_link_libraries(DoodleJump sfml-graphics sfml-window sfml-system)
+
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/resources" 
+     DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
 

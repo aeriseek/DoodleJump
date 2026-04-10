@@ -2,37 +2,21 @@
 
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Window/VideoMode.hpp"
-#include "SFML/Window/ContextSettings.hpp"
-#include "SFML/Window/Event.hpp"
-
+#include "Game.h"
+#include <filesystem>
+#include <iostream>
 int main()
 {
+
+	std::cout << "Current path is: " << std::filesystem::current_path() << std::endl;
 
 	sf::RenderWindow mainWin(
 		sf::VideoMode(windowSizeX, windowSizeY), 
 		"Doodle Jump", sf::Style::Close | sf::Style::Titlebar);
 
+	Game game(mainWin);
 
-
-
-	while (mainWin.isOpen())
-	{
-		sf::Event event;
-		while (mainWin.pollEvent(event))
-		{
-			switch (event.type)
-			{
-			case sf::Event::Closed:
-				mainWin.close();
-				break;
-			}
-
-		
-		}
-
-
-	}
-
+	game.run();
 
 	
 	return 0;

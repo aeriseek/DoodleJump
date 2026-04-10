@@ -2,17 +2,19 @@
 #include "AssetManager.h"
 #include "Register.h"
 #include <unordered_set>
+#include "SFML/Graphics/RenderWindow.hpp"
 
 
 class Game
 {
 private:
-
+    sf::RenderWindow* _win;
     AssetManager _assets;
     Register _reg;
     void createPlayer(float initPosX, float initPosY);
     void setBackground();
 public:
+    Game(sf::RenderWindow& gameWin);
     void run();
 
 };
