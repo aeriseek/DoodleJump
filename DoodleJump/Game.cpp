@@ -15,7 +15,9 @@ void Game::createPlayer()
     _reg.addPosition(player, windowSizeX / 2, windowSizeY / 2);
     _reg.addVelocity(player, 0.f, 0.f);
     _reg.addInput(player);
-    sf::Sprite sprite(AssetManager::GetTexture("resources/player.png"));
+	sf::Texture& tex = AssetManager::GetTexture("resources/player.png");
+    sf::Sprite sprite(tex);
+	sprite.setOrigin(tex.getSize().x / 2, tex.getSize().y / 2);
     _reg.addSprite(player, sprite);
 	_reg.gravityAffected[player] = true;
 };
