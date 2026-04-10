@@ -70,7 +70,7 @@ void Game::run()
 		CameraSystem(_reg, *_win, _view, _player);
 		CollisionSystem(_reg);
 		AnimationSystem(_reg);
-		RenderSystem(_reg, _win);
+		RenderSystem(_reg, _win, _view);
 		_win->display();
 	}
    
