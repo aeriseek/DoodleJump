@@ -4,4 +4,4 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 
 // simplest AABB
-void CollisionSystem(Register& reg, sf::RenderWindow& win);
+void CollisionSystem(Register& reg, sf::RenderWindow& win, sf::View& view);

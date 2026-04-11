@@ -45,7 +45,7 @@ void Game::run()
 		GravitySystem(_reg, dt);
 		MovementSystem(_reg, dt);
 		CameraSystem(_reg, *_win, _view);
-		CollisionSystem(_reg, *_win);
+		CollisionSystem(_reg, *_win, _view);
 		AnimationSystem(_reg, dt);
 		SoundSystem(_reg);
 		CleanupInputSystem(_reg);

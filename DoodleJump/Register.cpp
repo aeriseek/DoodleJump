@@ -4,7 +4,7 @@
 
 Register::Register()
 {
-	
+	levelY = (float)windowSizeY;
 }
 
 Entity Register::create()
@@ -44,9 +44,11 @@ uint32_t Register::totalEntities()
 void Register::restart()
 {
 	nextId = 0;
+	levelY = (float)windowSizeY;
 	velocities.clear();
 	inputComponent.clear();
 	sprites.clear();
+	soundComponent.clear();
 
 	hasPosition.reset();
 	hasVelocity.reset();
@@ -54,9 +56,11 @@ void Register::restart()
 	gravityAffected.reset();
 	hasSprite.reset();
 	hasCollision.reset();
+	hasSound.reset();
 
 	setBackground();
 	createPlayer();
+
 }
 
 void Register::addPosition(Entity e, float x, float y)

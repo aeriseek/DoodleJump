@@ -28,19 +28,23 @@ void resolveBorders(Register& reg, Entity entity) // left and right border scree
 	}
 }
 
-void resolveBottomBorder(Register& reg, Entity player, sf::RenderWindow& win)
+void resolveBottomBorder(Register& reg, Entity player, sf::RenderWindow& win, sf::View& view)
 {
-	const sf::View& view = win.getView();
 	float bottomViewEdge = view.getCenter().y + (view.getSize().y / 2.0f);
+
 	if (reg.positions[player].y > bottomViewEdge)
+	{
 		reg.restart();
+
+		view.setCenter(windowSizeX / 2.f, windowSizeY / 2.f);
+		win.setView(view);
+	}
 }
 
-void CollisionSystem(Register& reg, sf::RenderWindow& win)
+void CollisionSystem(Register& reg, sf::RenderWindow& win, sf::View& view)
 {
-
 		resolveBorders(reg, playerID);
-		resolveBottomBorder(reg, playerID, win);
+		resolveBottomBorder(reg, playerID, win, view);
 		for (Entity entity = playerID+1; entity < reg.positions.size(); ++entity)
 		{
 			if (!reg.hasCollision[entity]) continue;

@@ -15,6 +15,7 @@ class Register
 {
 	Entity nextId = 0;
 public:
+	float levelY;
 	std::vector<Position> positions {1024};
 	std::unordered_map<Entity, Velocity> velocities;
 	std::unordered_map<Entity, Input> inputComponent;

@@ -8,31 +8,28 @@ static std::mt19937 engine(rd());
 std::uniform_int_distribution<> distY(60, 200); // todo
 
 // builds next 2 pages of level
-void BuildLevelSystem(Register& reg, float startY)
+void BuildLevelSystem(Register& reg, float cameraTop)
 {
-    static float lastGeneratedHeight = startY;
-    bool isFirstTime = (reg.hasCollision.count() == 0);
-    if (!isFirstTime && startY >= lastGeneratedHeight - 500.f)
+    const float buffer = windowSizeY;
+    const float targetY = cameraTop - buffer;
+
+    while (reg.levelY > targetY)
     {
-        return;
-    }
-    lastGeneratedHeight = startY;
-    sf::Texture& tex = AssetManager::GetTexture("resources/platform.png");
-    std::uniform_int_distribution<> countDist(8, 15);
-    std::uniform_int_distribution<> distX(tex.getSize().x, windowSizeX - tex.getSize().x);
-    
-    uint32_t numOfPlatforms = countDist(engine);
-    float currentY = isFirstTime ? (float)windowSizeY : startY;
-    while (--numOfPlatforms){
+        sf::Texture& tex = AssetManager::GetTexture("resources/textures/platform.png");
+        std::uniform_int_distribution<> distX(tex.getSize().x, windowSizeX - (int)tex.getSize().x);
+
         Entity platform = reg.create();
-        float x = distX(engine);
-        currentY -= distY(engine);
-        reg.addPosition(platform, x, currentY);
-        
+        float x = (float)distX(engine);
+
+        reg.levelY -= (float)distY(engine);
+
+        reg.addPosition(platform, x, reg.levelY);
+
         sf::Sprite sprite(tex);
-        sprite.setPosition(x, currentY);
-        sprite.setOrigin(tex.getSize().x / 2, tex.getSize().y / 2);
+        sprite.setOrigin(tex.getSize().x / 2.f, tex.getSize().y / 2.f);
+        sprite.setPosition(x, reg.levelY);
+
         reg.addSprite(platform, sprite);
         reg.addCollision(platform);
     }
-};
+}
