@@ -2,7 +2,7 @@
 
 void MovementSystem(Register& reg, const float dt)
 {
-    for (auto const& [entity, _] : reg.positions)
+    for (Entity entity = 0; entity < reg.positions.size(); ++entity)
     {
         if (reg.hasVelocity[entity]) { // for inertion moves (gravity etc.)
             reg.positions[entity] += reg.velocities[entity] * dt;

@@ -2,9 +2,9 @@
 #include "CameraSystem.h"
 
 
-void CameraSystem(Register& reg, sf::RenderWindow& win, sf::View& view, Entity player)
+void CameraSystem(Register& reg, sf::RenderWindow& win, sf::View& view)
 {
-	float playerY = reg.positions[player].y;
+	float playerY = reg.positions[playerID].y;
 	float currentCenterY = view.getCenter().y;
 	if (playerY < currentCenterY) // only up
 		view.setCenter(view.getCenter().x, playerY);

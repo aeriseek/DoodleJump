@@ -1,13 +1,38 @@
 ﻿#include "Register.h"
+#include "Config.h"
+
+
+Register::Register()
+{
+	
+}
 
 Entity Register::create()
 {
 	Entity id = nextId++;
-	hasPosition[id] = false;
-	hasVelocity[id] = false;
-	positions[id] = Position(0.f, 0.f);
-	velocities[id] = Velocity(0.f, 0.f);
 	return id;
+}
+
+void Register::createPlayer()
+{
+	Entity player = create();
+	addPosition(player, windowSizeX / 2.f, windowSizeY / 2.f);
+	addVelocity(player, 0.f, 0.f);
+	addInput(player);
+	sf::Texture& tex = AssetManager::GetTexture("resources/player.png");
+	sf::Sprite sprite(tex);
+	sprite.setOrigin(tex.getSize().x / 2.f, tex.getSize().y / 2.f);
+	sprite.setPosition(windowSizeX / 2.f, windowSizeY / 2.f);
+	addSprite(player, sprite);
+	gravityAffected[player] = true;
+
+};
+
+void Register::setBackground()
+{
+	Entity background = create();
+	sf::Sprite sprite(AssetManager::GetTexture("resources/Background.png"));
+	addSprite(background, sprite);
 }
 
 uint32_t Register::totalEntities()
@@ -18,7 +43,6 @@ uint32_t Register::totalEntities()
 void Register::restart()
 {
 	nextId = 0;
-	positions.clear();
 	velocities.clear();
 	inputComponent.clear();
 	sprites.clear();
@@ -29,6 +53,9 @@ void Register::restart()
 	gravityAffected.reset();
 	hasSprite.reset();
 	hasCollision.reset();
+
+	setBackground();
+	createPlayer();
 }
 
 void Register::addPosition(Entity e, float x, float y)

@@ -6,6 +6,7 @@
 #include "components/Position.h"
 #include "components/Velocity.h"
 #include "components/Input.h"
+#include "AssetManager.h"
 
 using Entity = uint32_t;
 
@@ -13,7 +14,7 @@ class Register
 {
 	Entity nextId = 0;
 public:
-	std::unordered_map<Entity, Position> positions;
+	std::vector<Position> positions {1024};
 	std::unordered_map<Entity, Velocity> velocities;
 	std::unordered_map<Entity, Input> inputComponent;
 	std::unordered_map<Entity, sf::Sprite> sprites;
@@ -24,7 +25,12 @@ public:
 	std::bitset<1024> gravityAffected{};
 	std::bitset<1024> hasSprite{};
 	std::bitset<1024> hasCollision{};
+
+	Register();
+
 	Entity create();
+	void createPlayer();
+	void setBackground();
 	
 	uint32_t totalEntities();
 

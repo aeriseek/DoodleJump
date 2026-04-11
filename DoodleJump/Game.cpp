@@ -12,36 +12,15 @@
 
 #include <iostream>
 
-void Game::createPlayer()
-{
-    _player = _reg.create();
-    _reg.addPosition(_player, windowSizeX / 2, windowSizeY / 2);
-    _reg.addVelocity(_player, 0.f, 0.f);
-    _reg.addInput(_player);
-	sf::Texture& tex = AssetManager::GetTexture("resources/player.png");
-    sf::Sprite sprite(tex);
-	sprite.setOrigin(tex.getSize().x / 2, tex.getSize().y / 2);
-    _reg.addSprite(_player, sprite);
-	_reg.gravityAffected[_player] = true;
-
-
-};
-
-void Game::setBackground()
-{
-    Entity background = _reg.create();
-	sf::Sprite sprite(AssetManager::GetTexture("resources/Background2.png"));
-    _reg.addSprite(background, sprite);
-}
-
-Game::Game(sf::RenderWindow& gameWin) : _win(&gameWin), _view(sf::FloatRect(0, 0, windowSizeX, windowSizeY))
+Game::Game(sf::RenderWindow& gameWin) : 
+	_win(&gameWin), _view(sf::FloatRect(0, 0, windowSizeX, windowSizeY))
 {
 }
 
 void Game::run()
 {
-	setBackground();
-	createPlayer();
+	_reg.setBackground();
+	_reg.createPlayer();
 
 	sf::Clock clock;
 	
@@ -58,16 +37,12 @@ void Game::run()
 				break;
 			}
 		}
-	/*	std::cout << "posx : " << _reg.positions[1].x << std::endl;
-		std::cout << "posy : " << _reg.positions[1].y << std::endl;
-		std::cout << "velx : " << _reg.velocities[1].x << std::endl;
-		std::cout << "vely : " << _reg.velocities[1].x << std::endl;*/
 		float cameraTop = _view.getCenter().y - (_view.getSize().y / 2.0f);
 		BuildLevelSystem(_reg, cameraTop);
 		InputSystem(_reg);
 		GravitySystem(_reg, dt);
 		MovementSystem(_reg, dt);
-		CameraSystem(_reg, *_win, _view, _player);
+		CameraSystem(_reg, *_win, _view);
 		CollisionSystem(_reg, *_win);
 		AnimationSystem(_reg);
 		RenderSystem(_reg, _win, _view);

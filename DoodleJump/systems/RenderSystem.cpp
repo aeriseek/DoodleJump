@@ -1,5 +1,6 @@
 ﻿
 #include "RenderSystem.h"
+#include "Config.h"
 
 void RenderSystem(Register& reg, sf::RenderTarget* target, sf::View& gameView)
 {
@@ -8,12 +9,12 @@ void RenderSystem(Register& reg, sf::RenderTarget* target, sf::View& gameView)
 
 
     target->setView(target->getDefaultView()); // tmp
-    if (reg.hasSprite[0]) {
-        target->draw(reg.sprites[0]);
+    if (reg.hasSprite[backgroundID]) {
+        target->draw(reg.sprites[backgroundID]);
     }
     target->setView(gameView);
 
-    for (Entity entity = 1; entity < totalEntities; ++entity)
+    for (Entity entity = playerID; entity < totalEntities; ++entity)
     {
         if (reg.hasSprite[entity])
         {

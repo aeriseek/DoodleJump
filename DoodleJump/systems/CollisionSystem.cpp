@@ -38,21 +38,20 @@ void resolveBottomBorder(Register& reg, Entity player, sf::RenderWindow& win)
 
 void CollisionSystem(Register& reg, sf::RenderWindow& win)
 {
-	for (auto& [player, _] : reg.positions)
-	{
-		if (!reg.hasInput[player]) continue;
-		resolveBorders(reg, player);
-		resolveBottomBorder(reg, player, win);
-		for (auto& [entity, _] : reg.positions)
+
+		resolveBorders(reg, playerID);
+		resolveBottomBorder(reg, playerID, win);
+		for (Entity entity = playerID+1; entity < reg.positions.size(); ++entity)
 		{
-			if (player == entity || !reg.hasCollision[entity]) continue;
-			const sf::FloatRect& bPlayer = reg.sprites[player].getGlobalBounds();
+			if (!reg.hasCollision[entity]) continue;
+			const sf::FloatRect& bPlayer = reg.sprites[playerID].getGlobalBounds();
 			const sf::FloatRect& bEntity = reg.sprites[entity].getGlobalBounds();
 
-			if (reg.velocities[player].y > 0 && checkAABB(bEntity, bPlayer))
-				reg.velocities[player].y = jumpPower;
+			if (reg.velocities[playerID].y > 0 && checkAABB(bEntity, bPlayer)) {
+				reg.velocities[playerID].y = jumpPower;
+				reg.inputComponent[playerID].isJumped = true;
+			}
 		}
-	}
 
 }
 

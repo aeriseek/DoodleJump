@@ -6,4 +6,4 @@
 
 
 
-void CameraSystem(Register& reg, sf::RenderWindow& win, sf::View& view, Entity player);
+void CameraSystem(Register& reg, sf::RenderWindow& win, sf::View& view);
