@@ -1,11 +1,17 @@
 ﻿#include "CollisionSystem.h"
 
 
-bool checkAABB(const sf::FloatRect& a, const sf::FloatRect& b) {
-	return (a.left < b.left + b.width &&
-		a.left + a.width > b.left &&
-		a.top < b.top + b.height &&
-		a.top + a.height > b.top);
+bool checkAABB(const sf::FloatRect& platform, const sf::FloatRect& player) { // for player`s legs
+	sf::FloatRect legsSensor;
+	legsSensor.left = player.left;
+	legsSensor.width = player.width;
+	legsSensor.top = player.top + player.height - 2.0f;
+	legsSensor.height = 4.0f;
+
+	return (platform.left < legsSensor.left + legsSensor.width &&
+			platform.left + platform.width > legsSensor.left &&
+			platform.top < legsSensor.top + legsSensor.height &&
+			platform.top + platform.height > legsSensor.top);
 }
 
 void resolveBorders(Register& reg, Entity entity)
@@ -34,7 +40,7 @@ void CollisionSystem(Register& reg)
 			const sf::FloatRect& bPlayer = reg.sprites[player].getGlobalBounds();
 			const sf::FloatRect& bEntity = reg.sprites[entity].getGlobalBounds();
 
-			if (reg.velocities[player].y > 0 && checkAABB(bPlayer, bEntity))
+			if (reg.velocities[player].y > 0 && checkAABB(bEntity, bPlayer))
 				reg.velocities[player].y = jumpPower;
 		}
 	}

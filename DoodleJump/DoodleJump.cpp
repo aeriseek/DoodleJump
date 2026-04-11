@@ -3,12 +3,10 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Window/VideoMode.hpp"
 #include "Game.h"
-#include <filesystem>
-#include <iostream>
-int main()
+
+int WinMain()
 {
 
-	std::cout << "Current path is: " << std::filesystem::current_path() << std::endl;
 
 	sf::RenderWindow mainWin(
 		sf::VideoMode(windowSizeX, windowSizeY), 

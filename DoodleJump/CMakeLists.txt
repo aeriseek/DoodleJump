@@ -11,7 +11,7 @@ include_directories(.)
 
 include_directories(components systems)
 
-add_executable (DoodleJump 
+add_executable (DoodleJump WIN32
 "DoodleJump.cpp"  
 "Register.cpp" 
 "Register.h" 
