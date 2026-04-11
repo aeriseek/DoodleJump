@@ -28,6 +28,8 @@ public:
 	
 	uint32_t totalEntities();
 
+	void restart();
+
 	void addPosition(Entity e, float x, float y);
 
 	void addVelocity(Entity e, float x, float y);

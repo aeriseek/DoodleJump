@@ -68,7 +68,7 @@ void Game::run()
 		GravitySystem(_reg, dt);
 		MovementSystem(_reg, dt);
 		CameraSystem(_reg, *_win, _view, _player);
-		CollisionSystem(_reg);
+		CollisionSystem(_reg, *_win);
 		AnimationSystem(_reg);
 		RenderSystem(_reg, _win, _view);
 		_win->display();

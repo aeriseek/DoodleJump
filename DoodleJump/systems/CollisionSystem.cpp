@@ -14,7 +14,7 @@ bool checkAABB(const sf::FloatRect& platform, const sf::FloatRect& player) { // 
 			platform.top + platform.height > legsSensor.top);
 }
 
-void resolveBorders(Register& reg, Entity entity)
+void resolveBorders(Register& reg, Entity entity) // left and right border screens
 {
 	const sf::FloatRect entityBounds = reg.sprites[entity].getGlobalBounds();
 	sf::Vector2f origin = reg.sprites[entity].getOrigin();
@@ -28,12 +28,21 @@ void resolveBorders(Register& reg, Entity entity)
 	}
 }
 
-void CollisionSystem(Register& reg)
+void resolveBottomBorder(Register& reg, Entity player, sf::RenderWindow& win)
+{
+	const sf::View& view = win.getView();
+	float bottomViewEdge = view.getCenter().y + (view.getSize().y / 2.0f);
+	if (reg.positions[player].y > bottomViewEdge)
+		reg.restart();
+}
+
+void CollisionSystem(Register& reg, sf::RenderWindow& win)
 {
 	for (auto& [player, _] : reg.positions)
 	{
 		if (!reg.hasInput[player]) continue;
 		resolveBorders(reg, player);
+		resolveBottomBorder(reg, player, win);
 		for (auto& [entity, _] : reg.positions)
 		{
 			if (player == entity || !reg.hasCollision[entity]) continue;

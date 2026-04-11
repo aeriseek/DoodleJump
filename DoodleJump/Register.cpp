@@ -15,6 +15,22 @@ uint32_t Register::totalEntities()
 	return nextId;
 }
 
+void Register::restart()
+{
+	nextId = 0;
+	positions.clear();
+	velocities.clear();
+	inputComponent.clear();
+	sprites.clear();
+
+	hasPosition.reset();
+	hasVelocity.reset();
+	hasInput.reset();
+	gravityAffected.reset();
+	hasSprite.reset();
+	hasCollision.reset();
+}
+
 void Register::addPosition(Entity e, float x, float y)
 {
 	positions[e] = Position(x, y);
