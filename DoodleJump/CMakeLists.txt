@@ -5,7 +5,7 @@ project ("DoodleJump")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(SFML REQUIRED COMPONENTS system window graphics)
+find_package(SFML REQUIRED COMPONENTS system window graphics audio)
 
 include_directories(.)
 
@@ -20,7 +20,6 @@ add_executable (DoodleJump WIN32
 "Game.cpp"
 "components/Position.h"
 "components/Velocity.h"
-
 "systems/BuildLevelSystem.cpp"
 "systems/MovementSystem.cpp"
 "systems/RenderSystem.cpp"
@@ -28,9 +27,20 @@ add_executable (DoodleJump WIN32
 "AssetManager.cpp" 
 "systems/RenderSystem.h" 
 "systems/GravitySystem.h" 
-"systems/GravitySystem.cpp" "systems/MovementSystem.h" "systems/InputSystem.cpp" "systems/InputSystem.h" "components/Input.h" "systems/AnimationSystem.cpp" "systems/AnimationSystem.h" "systems/CollisionSystem.h" "systems/CollisionSystem.cpp" "systems/BuildLevelSystem.h" "systems/CameraSystem.h" "systems/CameraSystem.cpp")
+"systems/GravitySystem.cpp" 
+"systems/MovementSystem.h" 
+"systems/InputSystem.cpp" 
+"systems/InputSystem.h" 
+"components/Input.h" 
+"systems/AnimationSystem.cpp" 
+"systems/AnimationSystem.h" 
+"systems/CollisionSystem.h" 
+"systems/CollisionSystem.cpp" 
+"systems/BuildLevelSystem.h" 
+"systems/CameraSystem.h" 
+"systems/CameraSystem.cpp" "systems/SoundSystem.h" "systems/SoundSystem.cpp")
 
-target_link_libraries(DoodleJump sfml-graphics sfml-window sfml-system)
+target_link_libraries(DoodleJump sfml-graphics sfml-window sfml-system sfml-audio)
 
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/resources" 
      DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

@@ -44,7 +44,7 @@ void Game::run()
 		MovementSystem(_reg, dt);
 		CameraSystem(_reg, *_win, _view);
 		CollisionSystem(_reg, *_win);
-		AnimationSystem(_reg);
+		AnimationSystem(_reg, dt);
 		RenderSystem(_reg, _win, _view);
 		_win->display();
 	}

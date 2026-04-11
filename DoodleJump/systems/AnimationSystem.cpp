@@ -1,5 +1,6 @@
 ﻿#include "AnimationSystem.h"
 #include "Config.h"
+#include "SFML/Graphics/Sprite.hpp"
 
 void AnimationSystem(Register& reg, const float dt)
 {
@@ -12,17 +13,18 @@ void AnimationSystem(Register& reg, const float dt)
 
 		if (reg.inputComponent[playerID].isJumped)
 		{
-			reg.inputComponent[playerID].jumpAnimTimer = 0.2f;
+			reg.inputComponent[playerID].jumpAnimTimer = 0.5f;
 			reg.inputComponent[playerID].isJumped = false;
 		}
+
 		if (reg.inputComponent[playerID].jumpAnimTimer > 0.f)
 		{
 			reg.inputComponent[playerID].jumpAnimTimer -= dt;
-			// new sprite
+			reg.sprites[playerID].setTexture(AssetManager::GetTexture("resources/player_jumped.png"));
 		}
 		else
 		{
-			// back to std sprite
+			reg.sprites[playerID].setTexture(AssetManager::GetTexture("resources/player.png"));
 		}
 
 
