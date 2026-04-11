@@ -19,7 +19,8 @@ void Register::createPlayer()
 	addPosition(player, windowSizeX / 2.f, windowSizeY / 2.f);
 	addVelocity(player, 0.f, 0.f);
 	addInput(player);
-	sf::Texture& tex = AssetManager::GetTexture("resources/player.png");
+	addSound(player);
+	sf::Texture& tex = AssetManager::GetTexture("resources/textures/player.png");
 	sf::Sprite sprite(tex);
 	sprite.setOrigin(tex.getSize().x / 2.f, tex.getSize().y / 2.f);
 	sprite.setPosition(windowSizeX / 2.f, windowSizeY / 2.f);
@@ -31,7 +32,7 @@ void Register::createPlayer()
 void Register::setBackground()
 {
 	Entity background = create();
-	sf::Sprite sprite(AssetManager::GetTexture("resources/Background.png"));
+	sf::Sprite sprite(AssetManager::GetTexture("resources/textures/Background.png"));
 	addSprite(background, sprite);
 }
 
@@ -85,4 +86,10 @@ void Register::addSprite(Entity e, sf::Sprite sprite)
 void Register::addCollision(Entity e)
 {
 	hasCollision[e] = true;
+}
+
+void Register::addSound(Entity e)
+{
+	soundComponent[e] = SoundComponent();
+	hasSound[e] = true;
 }

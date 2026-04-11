@@ -8,6 +8,8 @@
 #include "systems/CollisionSystem.h"
 #include "systems/CameraSystem.h"
 #include "systems/BuildLevelSystem.h"
+#include "systems/SoundSystem.h"
+#include "systems/CleanupInputSystem.h"
 #include "SFML/Window/Event.hpp"
 
 #include <iostream>
@@ -45,6 +47,8 @@ void Game::run()
 		CameraSystem(_reg, *_win, _view);
 		CollisionSystem(_reg, *_win);
 		AnimationSystem(_reg, dt);
+		SoundSystem(_reg);
+		CleanupInputSystem(_reg);
 		RenderSystem(_reg, _win, _view);
 		_win->display();
 	}

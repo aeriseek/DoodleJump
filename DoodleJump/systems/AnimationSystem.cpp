@@ -12,10 +12,8 @@ void AnimationSystem(Register& reg, const float dt)
 			reg.sprites[playerID].setScale(-1.f, 1.f);
 
 		if (reg.inputComponent[playerID].isJumped)
-		{
 			reg.inputComponent[playerID].jumpAnimTimer = 0.5f;
-			reg.inputComponent[playerID].isJumped = false;
-		}
+		
 
 		if (reg.inputComponent[playerID].jumpAnimTimer > 0.f)
 		{

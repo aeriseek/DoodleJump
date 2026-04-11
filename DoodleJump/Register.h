@@ -6,6 +6,7 @@
 #include "components/Position.h"
 #include "components/Velocity.h"
 #include "components/Input.h"
+#include "components/SoundComponent.h"
 #include "AssetManager.h"
 
 using Entity = uint32_t;
@@ -18,6 +19,7 @@ public:
 	std::unordered_map<Entity, Velocity> velocities;
 	std::unordered_map<Entity, Input> inputComponent;
 	std::unordered_map<Entity, sf::Sprite> sprites;
+	std::unordered_map<Entity, SoundComponent> soundComponent;
 
 	std::bitset<1024> hasPosition{}; // max 1024 entities for begin
 	std::bitset<1024> hasVelocity{};
@@ -25,6 +27,7 @@ public:
 	std::bitset<1024> gravityAffected{};
 	std::bitset<1024> hasSprite{};
 	std::bitset<1024> hasCollision{};
+	std::bitset<1024> hasSound{};
 
 	Register();
 
@@ -45,5 +48,7 @@ public:
 	void addSprite(Entity e, sf::Sprite sprite);
 
 	void addCollision(Entity e);
+
+	void addSound(Entity e);
 };
 
