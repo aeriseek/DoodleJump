@@ -12,7 +12,6 @@ void BuildLevelSystem(Register& reg, float cameraTop)
 {
     const float buffer = windowSizeY;
     const float targetY = cameraTop - buffer;
-
     while (reg.levelY > targetY)
     {
         sf::Texture& tex = AssetManager::GetTexture("resources/textures/platform.png");

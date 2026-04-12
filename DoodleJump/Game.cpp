@@ -9,10 +9,12 @@
 #include "systems/CameraSystem.h"
 #include "systems/BuildLevelSystem.h"
 #include "systems/SoundSystem.h"
+#include "systems/BoundarySystem.h"
 #include "systems/CleanupInputSystem.h"
+#include "systems/CleanupSystem.h"
 #include "SFML/Window/Event.hpp"
 
-#include <iostream>
+#include <iostream> // tmp
 
 Game::Game(sf::RenderWindow& gameWin) : 
 	_win(&gameWin), _view(sf::FloatRect(0, 0, windowSizeX, windowSizeY))
@@ -28,6 +30,7 @@ void Game::run()
 	
 	while (_win->isOpen())
 	{
+		std::cout << _reg.totalEntities() << std::endl;
 		float dt = clock.restart().asSeconds();
 		sf::Event event;
 		while (_win->pollEvent(event))
@@ -48,7 +51,9 @@ void Game::run()
 		CollisionSystem(_reg, *_win, _view);
 		AnimationSystem(_reg, dt);
 		SoundSystem(_reg);
+		BoundarySystem(_reg, *_win);
 		CleanupInputSystem(_reg);
+		CleanupSystem(_reg);
 		RenderSystem(_reg, _win, _view);
 		_win->display();
 	}

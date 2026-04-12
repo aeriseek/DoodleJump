@@ -9,8 +9,10 @@ const float jumpPower = -750.f;
 
 const float G = 500; // gravity const
 
-constexpr sf::Keyboard::Key leftButton = sf::Keyboard::Left;
-constexpr sf::Keyboard::Key rightButton = sf::Keyboard::Right;
+const sf::Keyboard::Key leftButton = sf::Keyboard::Left;
+const sf::Keyboard::Key rightButton = sf::Keyboard::Right;
 
-const uint32_t backgroundID = 0;
+const uint32_t backgroundID = 0; // frist two ids reserved
 const uint32_t playerID = 1;
+
+const uint32_t maxEntities = 512; // for bit sets so as it takes 1 cache line in cpu

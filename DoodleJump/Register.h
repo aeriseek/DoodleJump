@@ -8,6 +8,7 @@
 #include "components/Input.h"
 #include "components/SoundComponent.h"
 #include "AssetManager.h"
+#include "Config.h"
 
 using Entity = uint32_t;
 
@@ -18,19 +19,19 @@ public:
 	float levelY;
 	std::vector<Entity> freeIDs;
 	std::vector<Entity> entitiesToDelete;
-	std::vector<Position> positions {1024};
+	std::vector<Position> positions { maxEntities };
 	std::unordered_map<Entity, Velocity> velocities;
 	std::unordered_map<Entity, Input> inputComponent;
 	std::unordered_map<Entity, sf::Sprite> sprites;
 	std::unordered_map<Entity, SoundComponent> soundComponent;
 
-	std::bitset<1024> hasPosition{}; // max 1024 entities for begin
-	std::bitset<1024> hasVelocity{};
-	std::bitset<1024> hasInput{};
-	std::bitset<1024> gravityAffected{};
-	std::bitset<1024> hasSprite{};
-	std::bitset<1024> hasCollision{};
-	std::bitset<1024> hasSound{};
+	std::bitset<maxEntities> hasPosition{}; 
+	std::bitset<maxEntities> hasVelocity{};
+	std::bitset<maxEntities> hasInput{};
+	std::bitset<maxEntities> gravityAffected{};
+	std::bitset<maxEntities> hasSprite{};
+	std::bitset<maxEntities> hasCollision{};
+	std::bitset<maxEntities> hasSound{};
 
 	Register();
 
