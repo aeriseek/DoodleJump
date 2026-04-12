@@ -47,8 +47,8 @@ void Register::createPlayer()
 	addPosition(player, windowSizeX / 2.f, windowSizeY / 2.f);
 	addVelocity(player, 0.f, 0.f);
 	addInput(player);
-	addSound(player, "resources/sounds/jumpSound.ogg");
-	sf::Texture& tex = AssetManager::GetTexture("resources/textures/player.png");
+	addSound(player, jumpSoundPath);
+	sf::Texture& tex = AssetManager::GetTexture(playerTexture);
 	sf::Sprite sprite(tex);
 	sprite.setOrigin(tex.getSize().x / 2.f, tex.getSize().y / 2.f);
 	sprite.setPosition(windowSizeX / 2.f, windowSizeY / 2.f);
@@ -60,11 +60,11 @@ void Register::createPlayer()
 void Register::setBackground()
 {
 	Entity background = create();
-	sf::Sprite sprite(AssetManager::GetTexture("resources/textures/Background.png"));
+	sf::Sprite sprite(AssetManager::GetTexture(backgroundTexture));
 	addSprite(background, sprite);
 }
 
-const uint32_t Register::totalEntities() const
+uint32_t Register::totalEntities() const
 {
 	return nextId;
 }
