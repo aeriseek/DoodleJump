@@ -1,12 +1,11 @@
 ﻿#include "Register.h"
-#include "Config.h"
 
 
 Register::Register()
 {
 	levelY = (float)windowSizeY;
-	freeIDs.reserve(1024);
-	entitiesToDelete.reserve(1024);
+	freeIDs.reserve(maxEntities);
+	entitiesToDelete.reserve(maxEntities);
 }
 
 Entity Register::create()
@@ -79,6 +78,9 @@ void Register::restart()
 	hasSprite.reset();
 	hasCollision.reset();
 	hasSound.reset();
+
+	freeIDs.clear();
+	entitiesToDelete.clear();
 
 	setBackground();
 	createPlayer();

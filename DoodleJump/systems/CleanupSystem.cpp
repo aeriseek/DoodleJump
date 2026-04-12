@@ -3,6 +3,7 @@
 
 void CleanupSystem(Register& reg)
 {
-	for (Entity entity = playerID; entity < reg.totalEntities(); ++entity)
+	for (Entity entity : reg.entitiesToDelete)
 		reg.remove(entity);
+	reg.entitiesToDelete.clear();
 }

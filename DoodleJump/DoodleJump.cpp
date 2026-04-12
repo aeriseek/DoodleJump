@@ -4,7 +4,7 @@
 #include "SFML/Window/VideoMode.hpp"
 #include "Game.h"
 
-int WinMain()
+int  main()
 {
 
 
