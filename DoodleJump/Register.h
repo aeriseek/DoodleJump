@@ -39,7 +39,7 @@ public:
 	void createPlayer();
 	void setBackground();
 	
-	uint32_t totalEntities();
+	const uint32_t totalEntities() const;
 
 	void restart();
 
