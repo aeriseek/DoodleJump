@@ -8,5 +8,8 @@ void BoundarySystem(Register& reg, sf::RenderTarget& win)
 	{
 		if (reg.hasPosition[entity] &&
 			!view.contains(reg.positions[entity].x, reg.positions[entity].y))
+		{
+			reg.entitiesToDelete.push_back(entity);
+		}
 	}
 }

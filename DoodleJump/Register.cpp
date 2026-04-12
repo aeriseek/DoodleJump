@@ -6,6 +6,7 @@ Register::Register()
 {
 	levelY = (float)windowSizeY;
 	freeIDs.reserve(1024);
+	entitiesToDelete.reserve(1024);
 }
 
 Entity Register::create()
