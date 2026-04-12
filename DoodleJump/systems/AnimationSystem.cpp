@@ -18,21 +18,10 @@ void AnimationSystem(Register& reg, const float dt)
 		if (reg.inputComponent[playerID].jumpAnimTimer > 0.f)
 		{
 			reg.inputComponent[playerID].jumpAnimTimer -= dt;
-			reg.sprites[playerID].setTexture(AssetManager::GetTexture("resources/player_jumped.png"));
+			reg.sprites[playerID].setTexture(AssetManager::GetTexture(playerJumpedTexture));
 		}
 		else
 		{
-			reg.sprites[playerID].setTexture(AssetManager::GetTexture("resources/player.png"));
+			reg.sprites[playerID].setTexture(AssetManager::GetTexture(playerTexture));
 		}
-
-
-	/*for (auto& [entity, sprite] : reg.sprites)
-	{
-		if (reg.hasInput[entity]) {
-			if (reg.inputComponent[entity].movingDirection < 0.f && sprite.getScale().x != 1.f)
-				sprite.setScale(1.f, 1.f);
-			else if (reg.inputComponent[entity].movingDirection > 0.f && sprite.getScale().x != -1.f)
-				sprite.setScale(-1.f, 1.f);
-		}
-	}*/
 }

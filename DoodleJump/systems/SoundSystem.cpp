@@ -1,12 +1,10 @@
 ﻿#include "SoundSystem.h"
 
 
-void SoundSystem(Register& reg)
+void SoundSystem(Register& reg) // works only for player yet
 {
 	if (reg.inputComponent[playerID].isJumped && reg.hasSound[playerID])
-	{
-		reg.soundComponent[playerID].playingSound.setBuffer(AssetManager::GetSound("resources/sounds/jumpSound.ogg"));
-		reg.soundComponent[playerID].playingSound.play();
-	}
+		reg.soundComponent[playerID].playingSound->play();
+	
 
 }

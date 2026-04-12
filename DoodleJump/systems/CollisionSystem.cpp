@@ -45,7 +45,7 @@ void CollisionSystem(Register& reg, sf::RenderWindow& win, sf::View& view)
 {
 		resolveBorders(reg, playerID);
 		resolveBottomBorder(reg, playerID, win, view);
-		for (Entity entity = playerID+1; entity < reg.positions.size(); ++entity)
+		for (Entity entity = playerID+1; entity < reg.totalEntities(); ++entity)
 		{
 			if (!reg.hasCollision[entity]) continue;
 			const sf::FloatRect& bPlayer = reg.sprites[playerID].getGlobalBounds();

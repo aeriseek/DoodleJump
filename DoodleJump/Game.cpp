@@ -30,7 +30,6 @@ void Game::run()
 	
 	while (_win->isOpen())
 	{
-		std::cout << _reg.totalEntities() << std::endl;
 		float dt = clock.restart().asSeconds();
 		sf::Event event;
 		while (_win->pollEvent(event))
