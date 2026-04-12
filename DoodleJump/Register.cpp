@@ -3,12 +3,12 @@
 
 Register::Register()
 {
-	levelY = static_cast<float>(windowSizeY);
-	positions.resize(maxEntities);
-	velocities.resize(maxEntities);
-	inputComponent.resize(maxEntities);
-	sprites.resize(maxEntities);
-	soundComponent.resize(maxEntities);
+	levelY = static_cast<float>(config::windowSizeY);
+	positions.resize(config::maxEntities);
+	velocities.resize(config::maxEntities);
+	inputComponent.resize(config::maxEntities);
+	sprites.resize(config::maxEntities);
+	soundComponent.resize(config::maxEntities);
 }
 
 Entity Register::create()
@@ -44,14 +44,14 @@ void Register::remove(Entity entity)
 void Register::createPlayer()
 {
 	Entity player = create();
-	addPosition(player, windowSizeX / 2.f, windowSizeY / 2.f);
+	addPosition(player, config::windowSizeX / 2.f, config::windowSizeY / 2.f);
 	addVelocity(player, 0.f, 0.f);
 	addInput(player);
-	addSound(player, jumpSoundPath);
-	sf::Texture& tex = AssetManager::GetTexture(playerTexture);
+	addSound(player, config::jumpSoundPath);
+	sf::Texture& tex = AssetManager::GetTexture(config::playerTexture);
 	sf::Sprite sprite(tex);
 	sprite.setOrigin(tex.getSize().x / 2.f, tex.getSize().y / 2.f);
-	sprite.setPosition(windowSizeX / 2.f, windowSizeY / 2.f);
+	sprite.setPosition(config::windowSizeX / 2.f, config::windowSizeY / 2.f);
 	addSprite(player, sprite);
 	gravityAffected[player] = true;
 
@@ -60,7 +60,7 @@ void Register::createPlayer()
 void Register::setBackground()
 {
 	Entity background = create();
-	sf::Sprite sprite(AssetManager::GetTexture(backgroundTexture));
+	sf::Sprite sprite(AssetManager::GetTexture(config::backgroundTexture));
 	addSprite(background, sprite);
 }
 
@@ -72,7 +72,7 @@ uint32_t Register::totalEntities() const
 void Register::restart()
 {
 	nextId = 0;
-	levelY = static_cast<float>(windowSizeY);
+	levelY = static_cast<float>(config::windowSizeY);
 
 	hasPosition.reset();
 	hasVelocity.reset();

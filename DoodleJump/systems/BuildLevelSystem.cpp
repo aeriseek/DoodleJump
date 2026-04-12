@@ -10,12 +10,12 @@ std::uniform_int_distribution<> distY(60, 200); // todo
 // builds next 2 pages of level
 void BuildLevelSystem(Register& reg, float cameraTop)
 {
-    const float buffer = windowSizeY;
+    const float buffer = config::windowSizeY;
     const float targetY = cameraTop - buffer;
     while (reg.levelY > targetY)
     {
         sf::Texture& tex = AssetManager::GetTexture("resources/textures/platform.png");
-        std::uniform_int_distribution<> distX(tex.getSize().x, windowSizeX - (int)tex.getSize().x);
+        std::uniform_int_distribution<> distX(tex.getSize().x, config::windowSizeX - (int)tex.getSize().x);
 
         Entity platform = reg.create();
         float x = (float)distX(engine);

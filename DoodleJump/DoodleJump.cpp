@@ -9,7 +9,7 @@ int  main()
 
 
 	sf::RenderWindow mainWin(
-		sf::VideoMode(windowSizeX, windowSizeY), 
+		sf::VideoMode(config::windowSizeX, config::windowSizeY),
 		"Doodle Jump", sf::Style::Close | sf::Style::Titlebar);
 
 	Game game(mainWin);

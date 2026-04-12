@@ -16,7 +16,7 @@ void BoundarySystem(Register& reg, sf::RenderTarget& win)
         size.x,
         size.y
     );
-	for (Entity entity = playerID + 1; entity < reg.totalEntities(); ++entity)
+	for (Entity entity = config::playerID + 1; entity < reg.totalEntities(); ++entity)
 	{
         if (reg.hasPosition[entity] && reg.positions[entity].y > bounds.top + bounds.height)
 			reg.entitiesToDelete.push_back(entity);

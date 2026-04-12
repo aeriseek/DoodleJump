@@ -1,25 +1,27 @@
 ﻿#pragma once
 #include "SFML/Window/Keyboard.hpp"
 #include <cstdint>
-#include <string>
-const int windowSizeX = 600;
-const int windowSizeY = 900;
+#include <string_view>
 
-const float playerSpeed = 600.f;
-const float jumpPower = -750.f;
+namespace config {
+    inline constexpr int windowSizeX = 600;
+    inline constexpr int windowSizeY = 900;
 
-const float G = 500; // gravity const
+    inline constexpr float playerSpeed = 600.f;
+    inline constexpr float jumpPower = -750.f;
 
-const sf::Keyboard::Key leftButton = sf::Keyboard::Left;
-const sf::Keyboard::Key rightButton = sf::Keyboard::Right;
+    inline constexpr float G = 500.f; // gravity const
 
-const uint32_t backgroundID = 0; // frist two ids reserved
-const uint32_t playerID = 1;
+    inline constexpr sf::Keyboard::Key leftButton = sf::Keyboard::Left;
+    inline constexpr sf::Keyboard::Key rightButton = sf::Keyboard::Right;
 
-const uint32_t maxEntities = 512; // for bit sets so as it takes 1 cache line in cpu
+    inline constexpr uint32_t backgroundID = 0;
+    inline constexpr uint32_t playerID = 1;
 
+    inline constexpr uint32_t maxEntities = 512;
 
-const std::string playerTexture = "resources/player.png"; 
-const std::string playerJumpedTexture = "resources/player_jumped.png";
-const std::string backgroundTexture = "resources/textures/Background.png";
-const std::string jumpSoundPath = "resources/sounds/jumpSound.ogg";
+    inline constexpr std::string_view playerTexture = "resources/player.png";
+    inline constexpr std::string_view playerJumpedTexture = "resources/player_jumped.png";
+    inline constexpr std::string_view backgroundTexture = "resources/textures/Background.png";
+    inline constexpr std::string_view jumpSoundPath = "resources/sounds/jumpSound.ogg";
+}

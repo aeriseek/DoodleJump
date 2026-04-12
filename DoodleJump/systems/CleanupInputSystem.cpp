@@ -3,5 +3,5 @@
 
 void CleanupInputSystem(Register& reg)
 {
-	reg.inputComponent[playerID].isJumped = false;
+	reg.inputComponent[config::playerID].isJumped = false;
 }
