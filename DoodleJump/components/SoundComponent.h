@@ -4,5 +4,4 @@
 struct SoundComponent
 {
 	sf::Sound playingSound;
-
 };

@@ -3,9 +3,12 @@
 
 Register::Register()
 {
-	levelY = (float)windowSizeY;
-	freeIDs.reserve(maxEntities);
-	entitiesToDelete.reserve(maxEntities);
+	levelY = static_cast<float>(windowSizeY);
+	positions.resize(maxEntities);
+	velocities.resize(maxEntities);
+	inputComponent.resize(maxEntities);
+	sprites.resize(maxEntities);
+	soundComponent.resize(maxEntities);
 }
 
 Entity Register::create()
@@ -24,13 +27,17 @@ Entity Register::create()
 
 void Register::remove(Entity entity)
 {
+	if (hasSound[entity]) {
+		soundComponent[entity].playingSound.stop();
+		hasSound.reset(entity);
+	}
+
 	hasPosition.reset(entity);
 	hasVelocity.reset(entity);
 	hasInput.reset(entity);
 	gravityAffected.reset(entity);
 	hasSprite.reset(entity);
 	hasCollision.reset(entity);
-	hasSound.reset(entity);
 	freeIDs.push_back(entity);
 }
 
@@ -40,7 +47,7 @@ void Register::createPlayer()
 	addPosition(player, windowSizeX / 2.f, windowSizeY / 2.f);
 	addVelocity(player, 0.f, 0.f);
 	addInput(player);
-	addSound(player);
+	addSound(player, "resources/sounds/jumpSound.ogg");
 	sf::Texture& tex = AssetManager::GetTexture("resources/textures/player.png");
 	sf::Sprite sprite(tex);
 	sprite.setOrigin(tex.getSize().x / 2.f, tex.getSize().y / 2.f);
@@ -65,11 +72,7 @@ const uint32_t Register::totalEntities() const
 void Register::restart()
 {
 	nextId = 0;
-	levelY = (float)windowSizeY;
-	velocities.clear();
-	inputComponent.clear();
-	sprites.clear();
-	soundComponent.clear();
+	levelY = static_cast<float>(windowSizeY);
 
 	hasPosition.reset();
 	hasVelocity.reset();
@@ -116,8 +119,9 @@ void Register::addCollision(Entity e)
 	hasCollision[e] = true;
 }
 
-void Register::addSound(Entity e)
+void Register::addSound(Entity e, std::string_view filename)
 {
 	soundComponent[e] = SoundComponent();
+	soundComponent[e].playingSound.setBuffer(AssetManager::GetSound(filename));
 	hasSound[e] = true;
 }

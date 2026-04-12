@@ -2,10 +2,12 @@
 
 void InputSystem(Register& reg)
 {
-	for (auto& itInput : reg.inputComponent)
+	for (Entity entity = 0; entity < reg.totalEntities(); ++entity)
 	{
-			itInput.second.movingDirection = 0.f;
-			if (sf::Keyboard::isKeyPressed(leftButton)) itInput.second.movingDirection -= 1.f;
-			if (sf::Keyboard::isKeyPressed(rightButton)) itInput.second.movingDirection += 1.f;
+		if (reg.hasInput[entity]) {
+			reg.inputComponent[entity].movingDirection = 0.f;
+			if (sf::Keyboard::isKeyPressed(leftButton)) reg.inputComponent[entity].movingDirection -= 1.f;
+			if (sf::Keyboard::isKeyPressed(rightButton)) reg.inputComponent[entity].movingDirection += 1.f;
+		}
 	}
 }

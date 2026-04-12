@@ -19,11 +19,11 @@ public:
 	float levelY;
 	std::vector<Entity> freeIDs;
 	std::vector<Entity> entitiesToDelete;
-	std::vector<Position> positions { maxEntities };
-	std::unordered_map<Entity, Velocity> velocities;
-	std::unordered_map<Entity, Input> inputComponent;
-	std::unordered_map<Entity, sf::Sprite> sprites;
-	std::unordered_map<Entity, SoundComponent> soundComponent;
+	std::vector<Position> positions;
+	std::vector<Velocity> velocities;
+	std::vector<Input> inputComponent;
+	std::vector<sf::Sprite> sprites;
+	std::vector<SoundComponent> soundComponent;
 
 	std::bitset<maxEntities> hasPosition{}; 
 	std::bitset<maxEntities> hasVelocity{};
@@ -54,6 +54,6 @@ public:
 
 	void addCollision(Entity e);
 
-	void addSound(Entity e);
+	void addSound(Entity e, std::string_view filename);
 };
 

@@ -1,13 +1,10 @@
 ﻿#include "GravitySystem.h"
-
-#include <iostream>
-
 void GravitySystem(Register& reg, const float dt)
 {
-	for (auto& itHasVelocity : reg.velocities)
+	for (Entity entity = playerID; entity < reg.totalEntities(); ++entity)
 	{
-		if (reg.gravityAffected[itHasVelocity.first]) {
-			itHasVelocity.second.y += G * dt;
+		if (reg.gravityAffected[entity]) {
+			reg.velocities[entity].y += G * dt;
 		} 
 	}
 	
