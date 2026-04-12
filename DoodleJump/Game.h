@@ -10,7 +10,6 @@ class Game
 private:
     sf::RenderWindow* _win;
     sf::View _view;
-    AssetManager _assets;
     Register _reg;
 public:
     Game(sf::RenderWindow& gameWin);
