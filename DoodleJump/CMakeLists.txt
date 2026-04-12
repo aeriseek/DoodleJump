@@ -38,7 +38,7 @@ add_executable (DoodleJump WIN32
 "systems/CollisionSystem.cpp" 
 "systems/BuildLevelSystem.h" 
 "systems/CameraSystem.h" 
-"systems/CameraSystem.cpp" "systems/SoundSystem.h" "systems/SoundSystem.cpp" "components/SoundComponent.h" "systems/CleanupInputSystem.h" "systems/CleanupInputSystem.cpp" "systems/CleanSystem.h" "systems/BoundarySystem.h" "systems/BoundarySystem.cpp")
+"systems/CameraSystem.cpp" "systems/SoundSystem.h" "systems/SoundSystem.cpp" "components/SoundComponent.h" "systems/CleanupInputSystem.h" "systems/CleanupInputSystem.cpp" "systems/CleanupSystem.h" "systems/BoundarySystem.h" "systems/BoundarySystem.cpp" "systems/CleanupSystem.cpp")
 
 target_link_libraries(DoodleJump sfml-graphics sfml-window sfml-system sfml-audio)
 

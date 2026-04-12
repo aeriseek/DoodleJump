@@ -58,7 +58,7 @@ void Register::setBackground()
 	addSprite(background, sprite);
 }
 
-uint32_t Register::totalEntities()
+const uint32_t Register::totalEntities() const
 {
 	return nextId;
 }
