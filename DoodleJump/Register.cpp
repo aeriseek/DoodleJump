@@ -27,8 +27,8 @@ Entity Register::create()
 
 void Register::remove(Entity entity)
 {
-	if (hasSound[entity]) {
-		soundComponent[entity].playingSound.stop();
+	if (hasSound[entity] && soundComponent[entity].playingSound) {
+		soundComponent[entity].playingSound->stop();
 		hasSound.reset(entity);
 	}
 
@@ -121,7 +121,7 @@ void Register::addCollision(Entity e)
 
 void Register::addSound(Entity e, std::string_view filename)
 {
-	soundComponent[e] = SoundComponent();
-	soundComponent[e].playingSound.setBuffer(AssetManager::GetSound(filename));
+	soundComponent[e].playingSound = std::make_unique<sf::Sound>();
+	soundComponent[e].playingSound->setBuffer(AssetManager::GetSound(filename));
 	hasSound[e] = true;
 }

@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "SFML/Audio/Sound.hpp"
+#include <memory>
 
 struct SoundComponent
 {
-	sf::Sound playingSound;
+	std::unique_ptr<sf::Sound> playingSound;
 };
