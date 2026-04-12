@@ -16,6 +16,7 @@ class Register
 	Entity nextId = 0;
 public:
 	float levelY;
+	std::vector<Entity> freeIDs;
 	std::vector<Position> positions {1024};
 	std::unordered_map<Entity, Velocity> velocities;
 	std::unordered_map<Entity, Input> inputComponent;
@@ -33,6 +34,7 @@ public:
 	Register();
 
 	Entity create();
+	void remove(Entity entity);
 	void createPlayer();
 	void setBackground();
 	

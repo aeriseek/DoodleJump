@@ -5,12 +5,33 @@
 Register::Register()
 {
 	levelY = (float)windowSizeY;
+	freeIDs.reserve(1024);
 }
 
 Entity Register::create()
 {
-	Entity id = nextId++;
+	Entity id;
+	if (!freeIDs.empty())
+	{
+		id = freeIDs.back();
+		freeIDs.pop_back();
+	}
+	else {
+		id = nextId++;
+	}
 	return id;
+}
+
+void Register::remove(Entity entity)
+{
+	hasPosition.reset(entity);
+	hasVelocity.reset(entity);
+	hasInput.reset(entity);
+	gravityAffected.reset(entity);
+	hasSprite.reset(entity);
+	hasCollision.reset(entity);
+	hasSound.reset(entity);
+	freeIDs.push_back(entity);
 }
 
 void Register::createPlayer()
