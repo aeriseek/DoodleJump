@@ -13,7 +13,6 @@ int  main()
 		"Doodle Jump", sf::Style::Close | sf::Style::Titlebar);
 
 	Game game(mainWin);
-
 	game.run();
 
 	

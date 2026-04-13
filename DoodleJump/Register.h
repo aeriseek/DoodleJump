@@ -33,6 +33,7 @@ public:
 	std::bitset<config::maxEntities> hasCollision{};
 	std::bitset<config::maxEntities> hasSound{};
 
+
 	Register();
 
 	Entity create();
@@ -43,7 +44,7 @@ public:
 	uint32_t totalEntities() const;
 
 	void restart();
-
+	
 	void addPosition(Entity e, float x, float y);
 
 	void addVelocity(Entity e, float x, float y);
