@@ -21,9 +21,8 @@ This project was specifically designed to demonstrate **Data-Oriented Design (DO
 
 ## ✨ Key Features
 * ⚡ **Custom ECS Engine:** High-speed entity management using bitmasks for system filtering.
-* ♾️ **Procedural Generation:** Infinite, seed-based platform spawning with automated memory cleanup.
-* 🍎 **Physics & Mechanics:** Smooth gravity, jumping, and seamless screen-wrapping (wrapping around screen edges).
-* 🏎️ **Data-Oriented:** Components are cache-aligned and laid out in memory to minimize CPU cache misses.
+* ♾️ **Procedural Generation:** Infinite platform spawning with automated memory cleanup.
+* 🏎️ **Data-Oriented:** Components are cache-aligned (SoA) to minimize CPU cache misses.
 * 📂 **Asset Management:** A centralized resource manager (Singleton) for optimized texture and sound loading.
 
 ---
@@ -35,11 +34,12 @@ This project was specifically designed to demonstrate **Data-Oriented Design (DO
 </div>
 
 ### Core Systems:
-* **GravitySystem:** Manages constant acceleration and terminal velocity.
-* **MovementSystem:** Updates positions based on physics components and player input.
-* **CollisionSystem:** Implements precise AABB collision detection (platform interaction only on descent).
+* **InputSystem:** Decouples raw SFML events from gameplay logic.
+* **AnimationSystem:** Handles frame switching and sprite management based on input or state.
+* **MovementSystem:** Updates positions and handles physics integration (including gravity and velocity).
+* **CollisionSystem:** Implements precise AABB collision detection (interaction only on descent).
 * **CameraSystem:** Smooth vertical-only camera tracking focused on player progression.
-* **BoundarySystem:** Handles entity teleportation at screen edges and automated culling of off-screen objects.
+* **BoundarySystem:** Automated culling (deletion) of off-screen objects to maintain performance.
 
 ---
 
