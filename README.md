@@ -1,79 +1,71 @@
-# Doodle Jump Clone (MVP)
+# 🚀 Doodle Jump Clone (MVP)
 
-![Game Demo](DoodleJump/screenshots/Game.png)
+<p align="center">
+  <img src="DoodleJump/screenshots/Game.png" width="500" alt="Game Demo">
+</p>
 
-A high-performance C++ clone of the classic Doodle Jump game, built using a custom Entity Component System (ECS) architecture and SFML.
+### 📖 Project Overview
+A high-performance **Doodle Jump** clone written in C++, powered by a custom-built **Entity Component System (ECS)** and the **SFML** library. 
 
-This project was developed to explore Data-Oriented Design and high-performance game engine architecture.
+This project was specifically designed to demonstrate **Data-Oriented Design (DOD)** principles and efficient game engine architecture, focusing on memory locality and cache-friendly systems.
 
-🔹 Features
+---
 
-Custom ECS Engine: High-speed entity management using bitsets and SoA (Structure of Arrays).
+## 🛠 Tech Stack
+* **Language:** C++20
+* **Graphics & Audio:** SFML 2.6.x
+* **Build System:** CMake
+* **Architecture:** Custom ECS (Structure of Arrays, Bitsets for signature matching)
 
-Infinite Procedural Generation: Dynamic platform spawning and cleanup.
+---
 
-Physics-based Gameplay: Realistic gravity, jumping, and screen wrapping.
+## ✨ Key Features
+* ⚡ **Custom ECS Engine:** High-speed entity management using bitmasks for system filtering.
+* ♾️ **Procedural Generation:** Infinite, seed-based platform spawning with automated memory cleanup.
+* 🍎 **Physics & Mechanics:** Smooth gravity, jumping, and seamless screen-wrapping (wrapping around screen edges).
+* 🏎️ **Data-Oriented:** Components are cache-aligned and laid out in memory to minimize CPU cache misses.
+* 📂 **Asset Management:** A centralized resource manager (Singleton) for optimized texture and sound loading.
 
-Data-Oriented: Components are cache-aligned to maximize CPU efficiency.
+---
 
-Asset Management: Centralized singleton for optimized texture and sound loading.
+## 🎮 Visuals
+<div align="center">
+  <img src="DoodleJump/screenshots/example1.png" width="380" alt="Example 1">
+  <img src="DoodleJump/screenshots/example2.png" width="380" alt="Example 2">
+</div>
 
-🔹 Examples
+### Core Systems:
+* **GravitySystem:** Manages constant acceleration and terminal velocity.
+* **MovementSystem:** Updates positions based on physics components and player input.
+* **CollisionSystem:** Implements precise AABB collision detection (platform interaction only on descent).
+* **CameraSystem:** Smooth vertical-only camera tracking focused on player progression.
+* **BoundarySystem:** Handles entity teleportation at screen edges and automated culling of off-screen objects.
 
-![example1](DoodleJump/screenshots/exmaple1)
+---
 
-![example2](DoodleJump/screenshots/exmaple2)
+## 📂 Project Structure
+* `components/` — Pure data structures (PODs: Position, Velocity, SpriteComponent).
+* `systems/` — Logic layers that transform and process component data.
+* `resources/` — Game assets (textures, fonts, and SFX).
 
+---
 
-Core Systems:
+## ⚙️ Build Instructions
 
-GravitySystem: Handles constant acceleration.
+### Requirements:
+* Compiler with **C++20** support (GCC, Clang, or MSVC)
+* **SFML 2.6.x** installed
+* **CMake** 3.15+
 
-MovementSystem: Updates positions based on velocity and input.
-
-CollisionSystem: Precise AABB collision for "feet-only" jumping.
-
-CameraSystem: Smooth vertical-only camera tracking.
-
-BoundarySystem: Screen-wrap (teleport) for the player and cleanup for platforms.
-
-🔹 Technologies
-
-* C++20
-
-* SFML 2.6.x: Rendering, Audio, and Window management.
-
-* CMake
-
-🔹 Build (CMake + SFML)
-
-Requirements
-Windows / Linux
-
-Compiler with C++20 support
-
-SFML 2.6.x
-
-#Setup
-Clone the repository:
-
-Bash
-git clone https://github.com/your-username/DoodleJump.git
+### How to build:
+```bash
+# 1. Clone the repository
+git clone [https://github.com/your-username/DoodleJump.git](https://github.com/your-username/DoodleJump.git)
 cd DoodleJump
-Create build directory:
 
-Bash
+# 2. Create build directory
 mkdir build && cd build
-Configure and build:
 
-Bash
+# 3. Configure and build
 cmake ..
 cmake --build .
-
-#Project Structure
-
-components/: Pure data structures (Position, Velocity, etc.).
-
-systems/: Logic handlers that iterate over components.
-
-resources/: Textures and sounds (ensure these are in the same folder as the executable).
