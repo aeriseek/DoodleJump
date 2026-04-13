@@ -33,6 +33,12 @@ This project was specifically designed to demonstrate **Data-Oriented Design (DO
   <img src="screenshots/example2.gif" width="300" alt="Example 2">
 </div>
 
+### Controls
+- **← →** — Move left / right
+
+### How to Play
+Control the character by moving left and right. The doodle automatically jumps upward. Your goal is to climb as high as possible without falling. Platforms are generated procedurally, and the camera follows the player vertically.
+
 ### Core Systems:
 * **InputSystem:** Decouples raw SFML events from gameplay logic.
 * **AnimationSystem:** Handles frame switching and sprite management based on input or state.
