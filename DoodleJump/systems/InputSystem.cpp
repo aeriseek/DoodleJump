@@ -6,8 +6,8 @@ void InputSystem(Register& reg)
 	{
 		if (reg.hasInput[entity]) {
 			reg.inputComponent[entity].movingDirection = 0.f;
-			if (sf::Keyboard::isKeyPressed(leftButton)) reg.inputComponent[entity].movingDirection -= 1.f;
-			if (sf::Keyboard::isKeyPressed(rightButton)) reg.inputComponent[entity].movingDirection += 1.f;
+			if (sf::Keyboard::isKeyPressed(config::leftButton)) reg.inputComponent[entity].movingDirection -= 1.f;
+			if (sf::Keyboard::isKeyPressed(config::rightButton)) reg.inputComponent[entity].movingDirection += 1.f;
 		}
 	}
 }

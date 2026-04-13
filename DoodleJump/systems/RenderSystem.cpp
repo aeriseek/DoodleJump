@@ -9,12 +9,12 @@ void RenderSystem(Register& reg, sf::RenderTarget* target, sf::View& gameView)
 
 
     target->setView(target->getDefaultView()); // tmp
-    if (reg.hasSprite[backgroundID]) {
-        target->draw(reg.sprites[backgroundID]);
+    if (reg.hasSprite[config::backgroundID]) {
+        target->draw(reg.sprites[config::backgroundID]);
     }
     target->setView(gameView);
 
-    for (Entity entity = playerID; entity < totalEntities; ++entity)
+    for (Entity entity = config::playerID; entity < totalEntities; ++entity)
     {
         if (reg.hasSprite[entity])
         {

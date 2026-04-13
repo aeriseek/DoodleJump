@@ -22,8 +22,8 @@ void resolveBorders(Register& reg, Entity entity) // left and right border scree
 		reg.positions[entity].x = origin.x;
 		reg.sprites[entity].setPosition(reg.positions[entity].x, reg.positions[entity].y);
 	}
-	else if (entityBounds.left + entityBounds.width > windowSizeX) {
-		reg.positions[entity].x = windowSizeX - (entityBounds.width - origin.x);
+	else if (entityBounds.left + entityBounds.width > config::windowSizeX) {
+		reg.positions[entity].x = config::windowSizeX - (entityBounds.width - origin.x);
 		reg.sprites[entity].setPosition(reg.positions[entity].x, reg.positions[entity].y);
 	}
 }
@@ -36,24 +36,24 @@ void resolveBottomBorder(Register& reg, Entity player, sf::RenderWindow& win, sf
 	{
 		reg.restart();
 
-		view.setCenter(windowSizeX / 2.f, windowSizeY / 2.f);
+		view.setCenter(config::windowSizeX / 2.f, config::windowSizeY / 2.f);
 		win.setView(view);
 	}
 }
 
 void CollisionSystem(Register& reg, sf::RenderWindow& win, sf::View& view)
 {
-		resolveBorders(reg, playerID);
-		resolveBottomBorder(reg, playerID, win, view);
-		for (Entity entity = playerID+1; entity < reg.totalEntities(); ++entity)
+		resolveBorders(reg, config::playerID);
+		resolveBottomBorder(reg, config::playerID, win, view);
+		for (Entity entity = config::playerID+1; entity < reg.totalEntities(); ++entity)
 		{
 			if (!reg.hasCollision[entity]) continue;
-			const sf::FloatRect& bPlayer = reg.sprites[playerID].getGlobalBounds();
+			const sf::FloatRect& bPlayer = reg.sprites[config::playerID].getGlobalBounds();
 			const sf::FloatRect& bEntity = reg.sprites[entity].getGlobalBounds();
 
-			if (reg.velocities[playerID].y > 0 && checkAABB(bEntity, bPlayer)) {
-				reg.velocities[playerID].y = jumpPower;
-				reg.inputComponent[playerID].isJumped = true;
+			if (reg.velocities[config::playerID].y > 0 && checkAABB(bEntity, bPlayer)) {
+				reg.velocities[config::playerID].y = config::jumpPower;
+				reg.inputComponent[config::playerID].isJumped = true;
 			}
 		}
 

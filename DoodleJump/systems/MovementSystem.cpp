@@ -9,7 +9,7 @@ void MovementSystem(Register& reg, const float dt)
         }
 
         if (reg.hasInput[entity]) { // for input moves
-            reg.positions[entity].x += playerSpeed * reg.inputComponent[entity].movingDirection * dt;
+            reg.positions[entity].x += config::playerSpeed * reg.inputComponent[entity].movingDirection * dt;
         }
     }
 }

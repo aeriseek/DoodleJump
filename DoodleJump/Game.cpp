@@ -17,7 +17,7 @@
 #include <iostream> // tmp
 
 Game::Game(sf::RenderWindow& gameWin) : 
-	_win(&gameWin), _view(sf::FloatRect(0, 0, windowSizeX, windowSizeY))
+	_win(&gameWin), _view(sf::FloatRect(0, 0, config::windowSizeX, config::windowSizeY))
 {
 }
 

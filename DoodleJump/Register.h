@@ -25,13 +25,13 @@ public:
 	std::vector<sf::Sprite> sprites;
 	std::vector<SoundComponent> soundComponent;
 
-	std::bitset<maxEntities> hasPosition{}; 
-	std::bitset<maxEntities> hasVelocity{};
-	std::bitset<maxEntities> hasInput{};
-	std::bitset<maxEntities> gravityAffected{};
-	std::bitset<maxEntities> hasSprite{};
-	std::bitset<maxEntities> hasCollision{};
-	std::bitset<maxEntities> hasSound{};
+	std::bitset<config::maxEntities> hasPosition{}; 
+	std::bitset<config::maxEntities> hasVelocity{};
+	std::bitset<config::maxEntities> hasInput{};
+	std::bitset<config::maxEntities> gravityAffected{};
+	std::bitset<config::maxEntities> hasSprite{};
+	std::bitset<config::maxEntities> hasCollision{};
+	std::bitset<config::maxEntities> hasSound{};
 
 	Register();
 
