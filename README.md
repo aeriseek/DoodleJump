@@ -1,9 +1,13 @@
-Doodle Jump
+# Doodle Jump Clone (MVP)
+
+![Game Demo] (screenshots/Game.png)
+
 A high-performance C++ remake of the classic Doodle Jump game, built using a custom Entity Component System (ECS) architecture and SFML.
 
 This project was developed to explore Data-Oriented Design and high-performance game engine architecture.
 
 🔹 Features
+
 Custom ECS Engine: High-speed entity management using bitsets and SoA (Structure of Arrays).
 
 Infinite Procedural Generation: Dynamic platform spawning and cleanup.
@@ -15,6 +19,9 @@ Data-Oriented: Components are cache-aligned to maximize CPU efficiency.
 Asset Management: Centralized singleton for optimized texture and sound loading.
 
 🔹 Screenshots
+
+
+
 Core Systems:
 GravitySystem: Handles constant acceleration.
 
