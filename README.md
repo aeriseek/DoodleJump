@@ -1,7 +1,7 @@
 # 🚀 Doodle Jump Clone (MVP)
 
 <p align="center">
-  <img src="DoodleJump/screenshots/Game.png" width="500" alt="Game Demo">
+  <img src="DoodleJump/screenshots/Game.png" width="300" alt="Game Demo">
 </p>
 
 ### 📖 Project Overview
@@ -30,8 +30,8 @@ This project was specifically designed to demonstrate **Data-Oriented Design (DO
 
 ## 🎮 Visuals
 <div align="center">
-  <img src="DoodleJump/screenshots/example1.png" width="380" alt="Example 1">
-  <img src="DoodleJump/screenshots/example2.png" width="380" alt="Example 2">
+  <img src="DoodleJump/screenshots/example1.gif" width="300" alt="Example 1">
+  <img src="DoodleJump/screenshots/example2.gif" width="300" alt="Example 2">
 </div>
 
 ### Core Systems:
