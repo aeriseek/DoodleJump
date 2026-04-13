@@ -9,14 +9,12 @@
 class AssetManager
 {
 public:
-	AssetManager();
 
 	static sf::Texture& GetTexture(std::string_view filename);
 	static sf::SoundBuffer& GetSound(std::string_view filename);
-
+	static AssetManager& Instance();
 private:
+	AssetManager() = default;
 	std::unordered_map<std::string, sf::SoundBuffer> _soundPool;
 	std::unordered_map<std::string, sf::Texture> _texturePool;
-
-	static AssetManager* _instance;
 };

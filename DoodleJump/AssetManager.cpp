@@ -1,19 +1,9 @@
 ﻿#include "AssetManager.h"
 
 
-AssetManager* AssetManager::_instance = nullptr;
-
-AssetManager::AssetManager()
-{
-	if (_instance == nullptr)
-	{
-		_instance = this;
-	}
-}
-
 sf::Texture& AssetManager::GetTexture(std::string_view filename)
 {
-	auto& texMap = _instance->_texturePool;
+	auto& texMap = Instance()._texturePool;
 	auto pairFound = texMap.find(filename.data());
 
 	if (pairFound != texMap.end())
@@ -30,7 +20,7 @@ sf::Texture& AssetManager::GetTexture(std::string_view filename)
 
 sf::SoundBuffer& AssetManager::GetSound(std::string_view filename)
 {
-	auto& soundMap = _instance->_soundPool;
+	auto& soundMap = Instance()._soundPool;
 	auto pairFound = soundMap.find(filename.data());
 	if (pairFound != soundMap.end())
 	{
@@ -42,4 +32,10 @@ sf::SoundBuffer& AssetManager::GetSound(std::string_view filename)
 		soundBuffer.loadFromFile(filename.data());
 		return soundBuffer;
 	}
+}
+
+AssetManager& AssetManager::Instance()
+{
+	static AssetManager instance;
+	return instance;
 }
