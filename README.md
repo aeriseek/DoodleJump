@@ -1,6 +1,6 @@
 # Doodle Jump Clone (MVP)
 
-![Game Demo] (screenshots/Game.png)
+![Game Demo] (DoodleJump/screenshots/Game.png)
 
 A high-performance C++ remake of the classic Doodle Jump game, built using a custom Entity Component System (ECS) architecture and SFML.
 
