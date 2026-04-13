@@ -60,7 +60,7 @@ This project was specifically designed to demonstrate **Data-Oriented Design (DO
 ### How to build:
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/your-username/DoodleJump.git](https://github.com/your-username/DoodleJump.git)
+git clone [git clone https://github.com/aeriseek/DoodleJump.git](https://github.com/your-username/DoodleJump.git)
 cd DoodleJump
 
 # 2. Create build directory
