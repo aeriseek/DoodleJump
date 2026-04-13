@@ -1,8 +1,8 @@
 # Doodle Jump Clone (MVP)
 
-![Game Demo] (DoodleJump/screenshots/Game.png)
+![Game Demo](DoodleJump/screenshots/Game.png)
 
-A high-performance C++ remake of the classic Doodle Jump game, built using a custom Entity Component System (ECS) architecture and SFML.
+A high-performance C++ clone of the classic Doodle Jump game, built using a custom Entity Component System (ECS) architecture and SFML.
 
 This project was developed to explore Data-Oriented Design and high-performance game engine architecture.
 
@@ -18,11 +18,15 @@ Data-Oriented: Components are cache-aligned to maximize CPU efficiency.
 
 Asset Management: Centralized singleton for optimized texture and sound loading.
 
-🔹 Screenshots
+🔹 Examples
 
+![example1](DoodleJump/screenshots/exmaple1)
+
+![example2](DoodleJump/screenshots/exmaple2)
 
 
 Core Systems:
+
 GravitySystem: Handles constant acceleration.
 
 MovementSystem: Updates positions based on velocity and input.
@@ -34,21 +38,23 @@ CameraSystem: Smooth vertical-only camera tracking.
 BoundarySystem: Screen-wrap (teleport) for the player and cleanup for platforms.
 
 🔹 Technologies
-C++17/20: inline constexpr, std::string_view, std::bitset.
 
-SFML 2.6.x: Rendering, Audio, and Window management.
+* C++20
 
-CMake: Cross-platform build system.
+* SFML 2.6.x: Rendering, Audio, and Window management.
+
+* CMake
 
 🔹 Build (CMake + SFML)
+
 Requirements
 Windows / Linux
 
-Compiler with C++17 support
+Compiler with C++20 support
 
 SFML 2.6.x
 
-Setup
+#Setup
 Clone the repository:
 
 Bash
@@ -63,7 +69,9 @@ Configure and build:
 Bash
 cmake ..
 cmake --build .
-Project Structure
+
+#Project Structure
+
 components/: Pure data structures (Position, Velocity, etc.).
 
 systems/: Logic handlers that iterate over components.
