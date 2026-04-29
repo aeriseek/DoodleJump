@@ -8,13 +8,11 @@ void RenderSystem(Register& reg, sf::RenderTarget* target, sf::View& gameView)
     uint32_t totalEntities = reg.totalEntities();
 
 
-    target->setView(target->getDefaultView()); // tmp
-    if (reg.hasSprite[config::backgroundID]) {
-        target->draw(reg.sprites[config::backgroundID]);
-    }
+    target->setView(target->getDefaultView());
+    target->draw(reg.sprites[config::backgroundID]); // draw BG picture
     target->setView(gameView);
 
-    for (Entity entity = config::playerID; entity < totalEntities; ++entity)
+    for (Entity entity = config::playerID + 1; entity < totalEntities; ++entity)
     {
         if (reg.hasSprite[entity])
         {
@@ -24,4 +22,12 @@ void RenderSystem(Register& reg, sf::RenderTarget* target, sf::View& gameView)
             target->draw(reg.sprites[entity]);
         }
     }
+    if (reg.hasSprite[config::playerID])
+    {
+        if (reg.hasPosition[config::playerID])
+            reg.sprites[config::playerID].setPosition(reg.positions[config::playerID].x, reg.positions[config::playerID].y);
+
+        target->draw(reg.sprites[config::playerID]);
+    } // draw player after all platforms
+
 }
