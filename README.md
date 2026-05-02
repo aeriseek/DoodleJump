@@ -66,7 +66,7 @@ Control the character by moving left and right. The doodle automatically jumps u
 ### How to build:
 ```bash
 # 1. Clone the repository
-git clone [git clone https://github.com/aeriseek/DoodleJump.git](https://github.com/your-username/DoodleJump.git)
+git clone https://github.com/aeriseek/DoodleJump.git
 cd DoodleJump
 
 # 2. Create build directory
